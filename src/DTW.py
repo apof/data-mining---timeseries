@@ -20,24 +20,11 @@ def DTW_distance(list1, list2):
 
 	for i in range(1,n):
 		for j in range(1,m):
-			#print list2[0][2]
 			cost = haversine((list1[i-1][2], list1[i-1][1]),(list2[j-1][2], list2[j-1][1]))
 			DTW[i][j] = cost + min(DTW[i-1][j], DTW[i][j-1], DTW[i-1][j-1])
 
-	#calculate distance
+	#DTW distance is on the right bottom cell
 	distance = DTW[n-1][m-1]
-	i = n-1
-	j = m-1
-	while(i != 1 and j != 1):
-		min_neigh = min(DTW[i-1][j], DTW[i][j-1], DTW[i-1][j-1])
-		distance = min_neigh
-		if(min_neigh == DTW[i-1][j]):
-			i = i-1
-		elif(min_neigh == DTW[i][j-1]):
-			j = j-1
-		else:
-			i = i-1
-			j = j-1
 
 	return distance
 
@@ -62,10 +49,10 @@ for test in testSetMatrix:
 		distances.append((distance, train[1], train[0]))
 	sorted_distances = sorted(distances,key=itemgetter(0))
 
-	plotter.plot(test[0],"root_"+str(counter)+".html")
+	plotter.plot(test[0],"route_"+str(counter)+".html")
 	for p in range(5):
-		plotter.plot(sorted_distances[p][1],"root_"+str(counter)+"-neighbor_"+str(p+1)+".html")
-		file.write("root_"+str(counter)+"-neighbor_"+str(p+1))
+		plotter.plot(sorted_distances[p][1],"route_"+str(counter)+"-neighbor_"+str(p+1)+".html")
+		file.write("route_"+str(counter)+"-neighbor_"+str(p+1))
 		file.write(",")
 		file.write(str(sorted_distances[p][2]))
 		file.write(",")
