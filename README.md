@@ -8,4 +8,4 @@ For the first task, we find the 5 closest neighbors using Dynamic Time Warping (
 For the second task, given several timeseries, we use the Longest Common Subsequence (LCS) technique in order to find other routes that have common parts.
 For the classification of routes we use a KNN classifier and the geographical distances between 2 GPS points are calculated with Harversine distance.
 
-Authors: Apostolos Florakis - Dimitrios Tsesmelis (https://github.com/JimTsesm)
+Authors: Apostolos Florakis(https://github.com/apof) - Dimitrios Tsesmelis (https://github.com/JimTsesm)
